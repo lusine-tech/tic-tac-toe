@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
     displayPlayer.classList.remove(`player${currentPlayer}`);
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     displayPlayer.innerText = currentPlayer;
-    displayPlayer.classList.add(`player${currentPlayer}`);
+    playerDisplay.classList.add(`player${currentPlayer}`);
   };
 
   const userAction = (cell, index) => {

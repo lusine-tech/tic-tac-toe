@@ -1,28 +1,28 @@
 window.addEventListener('DOMContentLoaded', () => {
 
-  const displayPlayer = document.querySelector(".display");
-  const cells = Array.from(document.querySelectorAll(".cell"));
-  const restartButton = document.querySelector("#restart");
-  const announcer = document.querySelector(".announcer");
+const displayPlayer = document.querySelector(".display");
+const cells = Array.from(document.querySelectorAll(".cell"));
+const restartButton = document.querySelector("#restart");
+const announcer = document.querySelector(".announcer");
 
-  let board = ["", "", "", "", "", "", "", "", ""];
-  let gameActive = true;
-  let currentPlayer = "X";
+let board = ["", "", "", "", "", "", "", "", ""];
+let gameActive = true;
+let currentPlayer = "X";
 
-  const winningConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+const winningConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 
-  const playerXWinner = "Player X is the winner";
-  const playerOWinner = "Player O is the winner";
-  const equal = "equal";
+ const playerXWinner = "Player X is the winner";
+ const playerOWinner = "Player O is the winner";
+ const equal = "equal";
 
   function handleResultValidation() {
     let roundWon = false;
@@ -42,12 +42,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (roundWon) {
       announce(currentPlayer === "X" ? playerXWinner : playerOWinner);
-      gameActive = false;
+    gameActive = false;
       return;
     }
 
     if (!board.includes("")) announce(equal);
-
   }
   const announce = (type) => {
     switch (type) {
@@ -56,14 +55,13 @@ window.addEventListener('DOMContentLoaded', () => {
         break;
       case playerXWinner:
         announcer.innerHTML = 'Player <span class="playerX">X</span> is the winner';
-
         break;
+ 
       case equal:
         announcer.innerHTML = "equal";
-
+       
     }
     announcer.classList.remove("hidden");
-
   };
 
   const isValidAction = (cell) => {
@@ -82,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
     displayPlayer.classList.remove(`player${currentPlayer}`);
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     displayPlayer.innerText = currentPlayer;
-    displayPlayer.classList.add(`player${currentPlayer}`);
+    playerDisplay.classList.add(`player${currentPlayer}`);
   };
 
   const userAction = (cell, index) => {
@@ -104,7 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
       changePlayer();
     }
 
-
+    
 
     cells.forEach((cell) => {
       cell.innerText = "";
